@@ -44,7 +44,7 @@ public class MainClass {
 			session.getTransaction().commit();
 		
 			//2. Retrieve customer to database
-			String id = "1";
+			int id = 1;
 			
 			session.beginTransaction();
 			
@@ -56,7 +56,7 @@ public class MainClass {
 			
 			//3. Delete customer from the database
 			
-			String customer_id = "1";
+			int customer_id = 1;
 			
 			session.beginTransaction();
 			
@@ -72,7 +72,7 @@ public class MainClass {
 			
 			//4. Update customer information
 			
-			String cust_id = "2";
+			int cust_id = 1;
 			
 			session.beginTransaction();
 			
