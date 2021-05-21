@@ -26,6 +26,10 @@ public class MainClass {
 		Session session = sessionFactory.getCurrentSession();
 		
 		try {
+			
+			/**
+			 * Uni-directional mapping
+			 * **/
 			// 1. Save customer
 			Customer customer = new Customer("Ahmed","Camara");
 			
@@ -81,6 +85,54 @@ public class MainClass {
 			}else {
 				System.out.println("Not Executed");
 			}
+			session.getTransaction().commit();
+			
+			
+			
+			
+			
+			System.out.println("****************************************************************************************************");
+			
+			
+			
+			/**
+			 * bi-directional mapping
+			 * 
+			 * **/
+			
+			//1. save Customer using customer_detail
+			Customer cs = new Customer("Idriss","Camara");
+			
+			Customer_detail c_details = new Customer_detail("abidjan,CIV","ahmed@gmail.com","SWE");
+		
+			c_details.setCustomer(cs);
+			
+			session.beginTransaction();
+			session.save(c_details);
+			session.getTransaction().commit();
+			
+			//2. Retrieve customer
+			int c_id = 3;
+			session.beginTransaction();
+			Customer_detail customer_detail = session.get(Customer_detail.class, c_id);
+			System.out.println("Customer Detail ==>> "+customer_detail);
+			System.out.println("The associated Customer  ==>> "+customer_detail.getCustomer());
+			session.getTransaction().commit();
+			
+			//3. Delete
+			int customer_ids = 2;
+			
+			session.beginTransaction();
+			
+			Customer_detail customer_dt = session.get(Customer_detail.class, customer_ids);
+			
+			if(customer_dt == null) {
+				System.out.println("Customer with id:"+customer_ids+" does not exist.");
+			}else {
+				session.delete(customer_dt);
+				customer_dt.getCustomer().setC_detail(null);
+			}
+			
 			session.getTransaction().commit();
 			
 		}catch(Exception ex) {

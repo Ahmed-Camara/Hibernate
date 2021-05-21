@@ -1,10 +1,12 @@
 package com.hibernate.onetoone.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,9 @@ public class Customer_detail {
 	
 	@Column(name="profession")
 	private String profession;
+	
+	@OneToOne(mappedBy="c_detail",cascade=CascadeType.ALL)
+	private Customer customer;
 	
 	public Customer_detail() {}
 
@@ -64,6 +69,15 @@ public class Customer_detail {
 
 	public void setProfession(String profession) {
 		this.profession = profession;
+	}
+
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	@Override
