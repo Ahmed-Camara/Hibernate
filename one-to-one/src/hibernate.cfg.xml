@@ -7,7 +7,7 @@
     <session-factory>
 
 
-        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/hibernate?useSSL=false&amp;serverTimezone=UTC</property>
         <property name="connection.username">camara</property>
         <property name="connection.password">ahmed</property>
