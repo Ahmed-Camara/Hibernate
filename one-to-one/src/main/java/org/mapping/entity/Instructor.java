@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Instructor {
 
     @Id
@@ -29,5 +28,11 @@ public class Instructor {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
+
+    @Override
+    public String toString() {
+        return "Instructor [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email + "]";
+    }
+
 
 }

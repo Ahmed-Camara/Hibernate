@@ -24,14 +24,26 @@ public class App implements CommandLineRunner{
     }
     @Override
     public void run(String... args) throws Exception {
+        try {
+            // I. Uni-directional
+            //1. Save in the database
+            this.saveInstructor();
 
-        //1. Save in the database
-        this.saveInstructor();
+            //2. Retrieve from the database
+            Integer id = 3;
+            Instructor instructor = this.getInstructor(id);
+            System.out.println(instructor);
 
-        //2. Retrieve from the database
-        Integer id = 3;
-        Instructor instructor = this.getInstructor(id);
-        System.out.println(instructor);
+            // II. Bi-directional
+            //1. Get Instructor By using InstructorDetail class
+            InstructorDetail instructorDetail = this.getInstructorDetail(103);
+            System.out.println("The instructor detail : "+instructorDetail);
+             System.out.println("The associated instructor : "+instructorDetail.getInstructor());
+
+
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     public void saveInstructor(){
@@ -53,5 +65,17 @@ public class App implements CommandLineRunner{
 
     public Instructor getInstructor(Integer id){
         return instructorService.getInstructor(id);
+    }
+
+    public InstructorDetail getInstructorDetail(Integer id){
+        return instructorService.getInstructorDetail(id);
+    }
+
+    public void deleteInstructor(Integer id){
+        instructorService.deleteInstructor(id);
+    }
+
+    public void deleteInstructorDetail(Integer id){
+        instructorService.deleteInstructorDetail(id);
     }
 }
