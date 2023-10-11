@@ -51,7 +51,7 @@ public class InstructorService {
         instructorDetail.getInstructor().setInstructorDetail(null);
         if(instructorDetail != null){
             System.out.println("Start deleting Details...........");
-            instructorDetailRepository.deleteById(id);
+            instructorDetailRepository.delete(instructorDetail);
             System.out.println("Deleted successfully !!!");
 
         }else{

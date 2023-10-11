@@ -25,6 +25,7 @@ public class App implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
         try {
+
             // I. Uni-directional
             //1. Save in the database
             this.saveInstructor();
@@ -38,7 +39,9 @@ public class App implements CommandLineRunner{
             //1. Get Instructor By using InstructorDetail class
             InstructorDetail instructorDetail = this.getInstructorDetail(103);
             System.out.println("The instructor detail : "+instructorDetail);
-             System.out.println("The associated instructor : "+instructorDetail.getInstructor());
+            System.out.println("The associated instructor : "+instructorDetail.getInstructor());
+
+            this.deleteInstructorDetail(102);
 
 
         }catch (Exception ex){
