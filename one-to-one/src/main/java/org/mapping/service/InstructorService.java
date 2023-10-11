@@ -48,9 +48,8 @@ public class InstructorService {
 
     public void deleteInstructorDetail(Integer id){
         InstructorDetail instructorDetail = instructorDetailRepository.findById(id).get();
-
+        instructorDetail.getInstructor().setInstructorDetail(null);
         if(instructorDetail != null){
-
             System.out.println("Start deleting Details...........");
             instructorDetailRepository.deleteById(id);
             System.out.println("Deleted successfully !!!");
